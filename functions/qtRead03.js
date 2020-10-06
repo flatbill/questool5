@@ -21,13 +21,13 @@ exports.handler = (event, context) => {
   
   return client.query(q.Get(q.Ref(myFaunaFetchRef)))
     .then((response) => {
-      console.log('success', response)
+      console.log('success myFaunaFetchRef ', response)
       return {
         statusCode: 200,
         body: JSON.stringify(response)
       }
     }).catch((error) => {
-      console.log('error', error)
+      console.log('error myFaunaFetchRef:', error)
       return {
         statusCode: 400,
         body: JSON.stringify(error)
