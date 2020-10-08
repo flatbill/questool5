@@ -12,8 +12,6 @@
     "start": "netlify dev",
     "prebuild": "echo 'setup faunaDB' && npm run bootstrap",
     "build1": "fooNoobuild"
-    },
-    
   },
   "devDependencies": {
     "netlify-cli": "^2.19.0"
