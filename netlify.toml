@@ -1,7 +1,7 @@
 [build]
   functions = "functions"
   # This will be run the site build
-  command = "npm run build"
+  # command = "npm run build"
   # This is the directory is publishing to netlify's CDN
   publish = "build"
   # selzer oct 2020 temp version of this toml to try to get angular to build on netify
