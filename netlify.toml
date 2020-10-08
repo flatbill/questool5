@@ -3,8 +3,8 @@
   # This will be run the site build
   command = "npm run build"
   # This is the directory is publishing to netlify's CDN
-  #publish = "build"
-
+  publish = "build"
+  # selzer oct 2020 temp version of this toml to try to get angular to build on netify
 [dev]
   # Local dev command. A.k.a npm start
   # command = "react-scripts start"
