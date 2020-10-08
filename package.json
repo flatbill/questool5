@@ -11,7 +11,7 @@
     "docs": "md-magic --path '**/*.md' --ignore 'node_modules'",
     "start": "netlify dev",
     "prebuild": "echo 'setup faunaDB' && npm run bootstrap",
-    "build": "build"
+    "build1": "fooNoobuild"
     },
     
   },
