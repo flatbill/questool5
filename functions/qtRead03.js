@@ -36,7 +36,9 @@ exports.handler = (event, context) => {
       console.log('error myFaunaFetchRef:', error)
       return {
         statusCode: 400,
-        
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:4200' 
+        },
         body: JSON.stringify(error)
       }
     })
