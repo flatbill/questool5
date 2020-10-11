@@ -24,15 +24,16 @@ exports.handler = (event, context) => {
       console.log('success myFaunaFetchRef ', response)
       return {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        },
         body: JSON.stringify(response)
       }
     }).catch((error) => {
       console.log('error myFaunaFetchRef:', error)
       return {
         statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        },
+        
         body: JSON.stringify(error)
       }
     })
