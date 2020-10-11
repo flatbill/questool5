@@ -1,5 +1,5 @@
 
-// read one question by myId from qtQuestions collection.
+// read one question by fauna ref from qtQuestions collection.
 let myFaunaCollection = 'qtQuestions'
 /* Import faunaDB sdk */
 const faunadb = require('faunadb')
@@ -18,7 +18,7 @@ exports.handler = (event, context) => {
   //let faunaRefParmIn  = urlSearchParams.get("ref")   //?cors fail?
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   // let myFaunaCollection = 'qtQuestions'
-  let myFaunaRefId =  '276380634185728512'
+  let myFaunaRef =  '276380634185728512'
   if (faunaRefQueryStringIn.length > 0 ) {myFaunaRef = faunaRefQueryStringIn}
   let myFaunaFetchRef = 'classes/' + myFaunaCollection + '/'+ myFaunaRef
   console.log('Function read03 myFaunaFetchRef : ' + myFaunaFetchRef) 
@@ -44,7 +44,7 @@ exports.handler = (event, context) => {
       return {
         statusCode: 400,
         headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:4200' 
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(error)
       }
