@@ -13,7 +13,7 @@ exports.handler = (event, context) => {
   }) 
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   //let x = window.location.origin //cors fail?
-  let faunaRefIdParmIn  = urlSearchParams1.get("ref")   //?cors fail?
+  let faunaRefIdParmIn  = urlSearchParams.get("ref")   //?cors fail?
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   // let myFaunaCollection = 'qtQuestions'
   let myFaunaRecId =  '276380634185728512'
