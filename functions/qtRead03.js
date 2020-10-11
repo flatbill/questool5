@@ -25,8 +25,7 @@ exports.handler = (event, context) => {
   
   //if (faunaRefQueryStringIn.length > 0 ) {myFaunaRef = faunaRefQueryStringIn}
   let myFaunaFetchRef = 'classes/' + myFaunaCollection + '/'+ myFaunaRef
-  console.log('Function read03 myFaunaFetchRef : ' + myFaunaFetchRef) 
-
+https://stupefied-elion-621b07.netlify.app/
   
   return client.query(q.Get(q.Ref(myFaunaFetchRef)))
     .then((response) => {
@@ -55,5 +54,7 @@ exports.handler = (event, context) => {
     })
 }
 function getIdInline(urlPath) {
+  console.log(`Running getIdInline from Netlify Function 'qtRead03' . urlPath: ${urlPath}`)
+
   return urlPath.match(/([^\/]*)\/*$/)[0]
 }
