@@ -12,7 +12,7 @@ exports.handler = (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
-  let x = window.location.search
+  let x = window.location.origin
     //let faunaRefIdParmIn  = urlSearchParams1.get("ref");
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   // let myFaunaCollection = 'qtQuestions'
