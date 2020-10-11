@@ -4,14 +4,14 @@ let myFaunaCollection = 'qtQuestions'
 /* Import faunaDB sdk */
 const faunadb = require('faunadb')
 const q = faunadb.query
-const getId = require('getId')
 
 exports.handler = (event, context) => {
   /* configure faunaDB Client with our secret */
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
-  const id = getId(event.path)
+  const id = getIdInline(event.path)
+
   console.log(`Netlify Function 'qtRead03' invoked. Read id: ${id}`)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   //let params1 = (new URL(document.location)).searchParams;
@@ -52,4 +52,7 @@ exports.handler = (event, context) => {
         body: JSON.stringify(error)
       }
     })
+}
+function getIdInline(urlPath) {
+  return urlPath.match(/([^\/]*)\/*$/)[0]
 }
