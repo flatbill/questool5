@@ -31,8 +31,7 @@ exports.handler = (event, context) => {
       return {
         statusCode: 400,
         headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:4200' ,
-          'Content-Type': 'application/json'
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(error)
       }
