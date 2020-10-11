@@ -25,7 +25,7 @@ exports.handler = (event, context) => {
       return {
         statusCode: 200,
         headers: {
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': stupefied-elion-621b07.netlify.app
         },
         body: JSON.stringify(response)
       }
