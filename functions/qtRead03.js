@@ -19,7 +19,8 @@ exports.handler = (event, context) => {
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   // let myFaunaCollection = 'qtQuestions'
  // let myFaunaRef =  '276380634185728512'
-  let myFaunaRef =  '276403382834430483'
+  //let myFaunaRef =  '276403382834430483'
+  let myFaunaRef =  id
 
   
   //if (faunaRefQueryStringIn.length > 0 ) {myFaunaRef = faunaRefQueryStringIn}
