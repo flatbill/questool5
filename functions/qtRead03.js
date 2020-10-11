@@ -24,16 +24,16 @@ exports.handler = (event, context) => {
       console.log('success myFaunaFetchRef ', response)
       return {
         statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': stupefied-elion-621b07.netlify.app
-        },
         body: JSON.stringify(response)
       }
     }).catch((error) => {
       console.log('error myFaunaFetchRef:', error)
       return {
         statusCode: 400,
-        
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:4200',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(error)
       }
     })
