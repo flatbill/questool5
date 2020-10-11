@@ -16,7 +16,10 @@ exports.handler = (event, context) => {
   //let faunaRefQueryStringIn = params1.get("ref");
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   // let myFaunaCollection = 'qtQuestions'
-  let myFaunaRef =  '276380634185728512'
+ // let myFaunaRef =  '276380634185728512'
+  let myFaunaRef =  '276403382834430483'
+
+  
   //if (faunaRefQueryStringIn.length > 0 ) {myFaunaRef = faunaRefQueryStringIn}
   let myFaunaFetchRef = 'classes/' + myFaunaCollection + '/'+ myFaunaRef
   console.log('Function read03 myFaunaFetchRef : ' + myFaunaFetchRef) 
