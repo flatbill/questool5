@@ -25,7 +25,7 @@ exports.handler = (event, context) => {
   
   //if (faunaRefQueryStringIn.length > 0 ) {myFaunaRef = faunaRefQueryStringIn}
   let myFaunaFetchRef = 'classes/' + myFaunaCollection + '/'+ myFaunaRef
-https://stupefied-elion-621b07.netlify.app/
+//https://stupefied-elion-621b07.netlify.app/
   
   return client.query(q.Get(q.Ref(myFaunaFetchRef)))
     .then((response) => {
