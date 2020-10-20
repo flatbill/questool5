@@ -1,5 +1,4 @@
 
-// read  questions by qid.
 let myFaunaCollection = 'qtQuestions'
 /* Import faunaDB sdk */
 const faunadb = require('faunadb')
@@ -10,7 +9,7 @@ exports.handler = (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
-  const id = getIdInline(event.path)
+  //const id = getIdInline(event.path)
 
   console.log('Netlify Function qtReadQuestions invoked.')
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
