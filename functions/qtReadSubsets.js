@@ -9,7 +9,8 @@ exports.handler = async (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
-
+  const myQid = event.queryStringParameters.qid ;
+  console.log('myQid:',myQid)
   console.log('Netlify Function qtReadSubsets invoked.')
   console.log('here is qtReadSubsets event:', event)
   //console.log('here is qtReadSubsets event body:', event.body)
