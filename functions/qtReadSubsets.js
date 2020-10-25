@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
 
   console.log('Netlify Function qtReadSubsets invoked.')
   console.log('here is qtReadSubsets event:', event)
-  console.log('here is qtReadSubsets event body:', event.body)
+  //console.log('here is qtReadSubsets event body:', event.body)
   //  console.log('qtReadSubsets event payload is:',event.payload) ?
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
@@ -20,14 +20,14 @@ exports.handler = async (event, context) => {
 //const datafromEventBody = JSON.parse(event.body)
 //console.log('Function qtReadSubsets invoked. event body: ')
 //console.table(event.body) 
-const todoItem = {
-  datafromEventBody: data
-}
+// const todoItem = {
+//   datafromEventBody: data
+// }
 //return client.query(q.Create(q.Ref('classes/todos'), todoItem))
 
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
   // return client.query(q.Paginate(q.Match(q.Ref('indexes/qtSubsetsX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qtSubsetsX1'), todoItem )))
+  return client.query(q.Paginate(q.Match(q.Index('qtSubsetsX1'), '1' )))
   //q.Match(q.Index('spells_by_element'), 'fire')
     .then((response) => {
     const todoRefs = response.data
