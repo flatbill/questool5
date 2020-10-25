@@ -15,7 +15,7 @@ exports.handler = (event, context) => {
   
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
   // return client.query(q.Paginate(q.Match(q.Ref('indexes/qtSubsetsX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qid'), '1' )))
+  return client.query(q.Paginate(q.Match(q.Index('qtSubsetsX1'), '1' )))
   //q.Match(q.Index('spells_by_element'), 'fire')
     .then((response) => {
     const todoRefs = response.data
