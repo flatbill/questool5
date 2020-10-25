@@ -14,7 +14,9 @@ exports.handler = (event, context) => {
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Ref('indexes/qtSubsetsX1'))))
+  // return client.query(q.Paginate(q.Match(q.Ref('indexes/qtSubsetsX1'))))
+  return client.query(q.Paginate(q.Match(q.Index('qid'), '1' )))
+  //q.Match(q.Index('spells_by_element'), 'fire')
     .then((response) => {
     const todoRefs = response.data
     console.log('Todo refs', todoRefs)
