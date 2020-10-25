@@ -11,6 +11,7 @@ exports.handler = (event, context) => {
   }) 
 
   console.log('Netlify Function qtReadSubsets invoked.')
+  console.log('qtReadSubsets context is:', context)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
