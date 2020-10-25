@@ -11,12 +11,13 @@ exports.handler = async (event, context) => {
   }) 
 
   console.log('Netlify Function qtReadSubsets invoked.')
-  //console.log('qtReadSubsets event is all this:', event)
+  console.log('here is qtReadSubsets event:', event)
+  console.log('here is qtReadSubsets event body:', event.body)
   //  console.log('qtReadSubsets event payload is:',event.payload) ?
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
 /* parse the string body into a useable JS object */
-const datafromEventBody = JSON.parse(event.body)
+//const datafromEventBody = JSON.parse(event.body)
 //console.log('Function qtReadSubsets invoked. event body: ')
 //console.table(event.body) 
 const todoItem = {
