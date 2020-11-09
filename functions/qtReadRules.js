@@ -15,9 +15,9 @@ exports.handler = async (event, context) => {
   console.log('myQid:',myQid)
   console.log('Netlify Function qtReadRules invoked.')
   console.log('here is qtReadRules event:', event)
-  let custAndQid = myCust + myQid
+  // let custAndQid = myCust + myQid
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Index('qtRulesX1'), custAndQid )))
+  return client.query(q.Paginate(q.Match(q.Index('qtRulesX1'), [myCust,myQid] )))
     .then((response) => {
     const qtRulesRefs = response.data
     console.log('qtRules refs', qtRulesRefs)
