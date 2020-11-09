@@ -9,13 +9,15 @@ exports.handler = async (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
+  const myCust = event.queryStringParameters.cust ;
   const myQid = event.queryStringParameters.qid ;
+  console.log('myCust:',myCust)
   console.log('myQid:',myQid)
   console.log('Netlify Function qtReadRules invoked.')
   console.log('here is qtReadRules event:', event)
-
+  let custAndQid = myCust + myQid
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Index('qtRulesX1'), myQid )))
+  return client.query(q.Paginate(q.Match(q.Index('qtRulesX1'), custAndQid )))
     .then((response) => {
     const qtRulesRefs = response.data
     console.log('qtRules refs', qtRulesRefs)
