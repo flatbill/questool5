@@ -10,26 +10,15 @@ exports.handler = async (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
   const myQid = event.queryStringParameters.qid ;
+  const myCust = event.queryStringParameters.cust ;
   console.log('myQid:',myQid)
+  console.log('myQid:',myCust)
   console.log('Netlify Function qtReadSubsets invoked.')
   console.log('here is qtReadSubsets event:', event)
-  //console.log('here is qtReadSubsets event body:', event.body)
-  //  console.log('qtReadSubsets event payload is:',event.payload) ?
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
-/* parse the string body into a useable JS object */
-//const datafromEventBody = JSON.parse(event.body)
-//console.log('Function qtReadSubsets invoked. event body: ')
-//console.table(event.body) 
-// const qtSubsetsItem = {
-//   datafromEventBody: data
-// }
-//return client.query(q.Create(q.Ref('classes/qtSubsets'), qtSubsetsItem))
-
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  // return client.query(q.Paginate(q.Match(q.Ref('indexes/qtSubsetsX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qtSubsetsX1'), myQid )))
-  //q.Match(q.Index('spells_by_element'), 'fire')
+  return client.query(q.Paginate(q.Match(q.Index('qtSubsetsX1'), [myCust,myQid] )))
     .then((response) => {
     const qtSubsetsRefs = response.data
     console.log('qtSubsets refs', qtSubsetsRefs)

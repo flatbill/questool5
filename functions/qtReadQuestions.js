@@ -10,6 +10,7 @@ exports.handler = (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
   //const id = getIdInline(event.path)
+  const myCust = event.queryStringParameters.cust ;
   const myQid = event.queryStringParameters.qid ;
 
   console.log('Netlify Function qtReadQuestions invoked.')
@@ -17,7 +18,7 @@ exports.handler = (event, context) => {
   
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
   //return client.query(q.Paginate(q.Match(q.Ref('indexes/qtQuestionsX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qtQuestionsX1'),myQid)))
+  return client.query(q.Paginate(q.Match(q.Index('qtQuestionsX1'),[myCust,myQid])))
     .then((response) => {
     const qtQuestionsRefs = response.data
     console.log('qtQuestions refs', qtQuestionsRefs)
