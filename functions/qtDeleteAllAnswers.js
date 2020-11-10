@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
   console.log('here is qtDeleteAllAnswers event:', event)
   //
 // construct batch query from a list of Ids
-let frogIds = ["281630512545530370","281630515933479426"]
+let frogIds = ["281630516862517763","281630517517877763"]
 const deleteAllQuery = frogIds.map((idd) => {
   return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
@@ -38,7 +38,7 @@ const deleteAllQuery = frogIds.map((idd) => {
       return {
         statusCode: 200,
         headers: {'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify(ret)
+        body: JSON.stringify(response)
       }
     })
    .catch((error) => {
