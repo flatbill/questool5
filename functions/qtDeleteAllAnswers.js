@@ -18,7 +18,8 @@ exports.handler = async (event, context) => {
   //
 // construct batch query from a list of Ids
 //let frogIds = ["281630516862517763","281630517517877763"]
-let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'))))
+let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'),myQid)))
+console.log('refLength:',refs.length)
 let bigQuery = refs.data.map((ref) => q.Get(ref))
 let allDocuments = await client.query(bigQuery)
 
