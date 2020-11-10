@@ -18,8 +18,11 @@ exports.handler = async (event, context) => {
   //
 // construct batch query from a list of Ids
 //let frogIds = ["281630516862517763","281630517517877763"]
-let frogIds = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'))))
-const deleteAllQuery = frogIds.map((idd) => {
+let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'))))
+let bigQuery = refs.data.map((ref) => q.Get(ref))
+let allDocuments = await client.query(bigQuery)
+
+const deleteAllQuery = allDocuments.map((idd) => {
   return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
 // Hit it and quit it
