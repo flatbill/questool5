@@ -17,7 +17,8 @@ exports.handler = async (event, context) => {
   console.log('here is qtDeleteAllAnswers event:', event)
   //
 // construct batch query from a list of Ids
-let frogIds = ["281630516862517763","281630517517877763"]
+//let frogIds = ["281630516862517763","281630517517877763"]
+let frogIds = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'))))
 const deleteAllQuery = frogIds.map((idd) => {
   return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
