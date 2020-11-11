@@ -22,7 +22,7 @@ let frogIds = ["281634707771228672","281634709760377347"]
 let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'),myQid)))
 console.log('refs  here:')
 console.table(refs)
-let bigQuery = refs.data.map((reff) => q.Get(reff.id.get))
+let bigQuery = refs.data.map((reff) => q.Get(reff.id))
 console.log('bigQuery length:',bigQuery.length)
 console.table(bigQuery)
 //let allDocuments = await client.query(bigQuery)
