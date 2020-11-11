@@ -17,36 +17,14 @@ exports.handler = async (event, context) => {
   console.log('here is qtDeleteAllAnswers event:', event)
   //
 // construct batch query from a list of Ids
-let frogIds = ["281634707771228672","281634709760377347"]
 
 let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'),myQid)))
-let listOfIds = refs.data.map((reff) => reff.id)
-// console.log('refs  here:')
-// console.table(refs)
-// let bigQuery = refs.data.map((reff) => q.Get(reff.id))
-// console.log('bigQuery length:',bigQuery.length)
-// console.table(bigQuery)
-// console.log('slinko:')
-// console.table(slinko)
-//let allDocuments = await client.query(bigQuery)
-//let deleteAllQuery = bigQuery.map((idd) => {
-  //let deleteAllQuery = frogIds.map((idd) => {
-  //  let deleteAllQuery = bigQuery.map((idd) => {
-      //const deleteAllQuery = allDocuments.map((idd) => {
+let listOfIds = refs.data.map((r) => r.id)
  const deleteAllQuery = listOfIds.map((idd) => {
-        return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
+   return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
   return client.query(deleteAllQuery)
-  //   q.Delete(
-  //       Select(
-  //        "ref",
-  //        Get(
-  //         //Match(Index("qtAnswersX1"), [myCust,myQid])
-  //         Match(Index("qtAnswersX1"), myQid)
-  //         )))
-  // )
     .then((response) => {
-      //const qtFango = response.data
       console.log('running .then of qtDeleteAllAnswers')
       return {
         statusCode: 200,
