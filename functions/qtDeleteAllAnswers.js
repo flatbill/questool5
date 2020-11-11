@@ -25,6 +25,7 @@ console.table(refs)
 let bigQuery = refs.data.map((reff) => q.Get(reff.id))
 console.log('bigQuery length:',bigQuery.length)
 console.table(bigQuery)
+console.log(bigQuery[0].get)
 //let allDocuments = await client.query(bigQuery)
 //let deleteAllQuery = bigQuery.map((idd) => {
   //let deleteAllQuery = frogIds.map((idd) => {
