@@ -25,8 +25,8 @@ console.table(refs)
 let bigQuery = refs.data.map((ref) => q.Get(ref))
 console.log('bigQuery length:',bigQuery.length)
 let allDocuments = await client.query(bigQuery)
-
-const deleteAllQuery = frogIds.map((idd) => {
+let frickQuery = bigQuery.map((idd) => {
+//const deleteAllQuery = frogIds.map((idd) => {
   //const deleteAllQuery = allDocuments.map((idd) => {
     return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
