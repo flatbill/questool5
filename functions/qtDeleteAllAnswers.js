@@ -23,7 +23,6 @@ let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'),myQid)))
 console.log('refs  here:')
 console.table(refs)
 let bigQuery = refs.data.map((reff) => q.Get(reff.id))
-let slinko = refs.data.map((reff) => reff.id)
 console.log('bigQuery length:',bigQuery.length)
 console.table(bigQuery)
 let slinko = refs.data.map((reff) => reff.id)
@@ -32,9 +31,10 @@ console.table(slinko)
 //let allDocuments = await client.query(bigQuery)
 //let deleteAllQuery = bigQuery.map((idd) => {
   //let deleteAllQuery = frogIds.map((idd) => {
-    let deleteAllQuery = bigQuery.map((idd) => {
+  //  let deleteAllQuery = bigQuery.map((idd) => {
       //const deleteAllQuery = allDocuments.map((idd) => {
-    return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
+ const deleteAllQuery = slinko.map((idd) => {
+        return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
   return client.query(deleteAllQuery)
   //   q.Delete(
