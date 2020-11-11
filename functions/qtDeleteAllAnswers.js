@@ -18,7 +18,9 @@ exports.handler = async (event, context) => {
   //
 // construct batch query from a list of Ids
 
-let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'),myQid)))
+let refs = await client.query
+  (q.Paginate(q.Match(q.Index('qtAnswersX1'),[myCust,myQid]))
+  )
 let listOfIds = refs.data.map((r) => r.id)
  const deleteAllQuery = listOfIds.map((idd) => {
    return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
