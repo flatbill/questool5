@@ -20,20 +20,20 @@ exports.handler = async (event, context) => {
 let frogIds = ["281634707771228672","281634709760377347"]
 
 let refs = await client.query(q.Paginate(q.Match(q.Index('qtAnswersX1'),myQid)))
-console.log('refs  here:')
-console.table(refs)
-let bigQuery = refs.data.map((reff) => q.Get(reff.id))
-console.log('bigQuery length:',bigQuery.length)
-console.table(bigQuery)
-let slinko = refs.data.map((reff) => reff.id)
-console.log('slinko:')
-console.table(slinko)
+let listOfIds = refs.data.map((reff) => reff.id)
+// console.log('refs  here:')
+// console.table(refs)
+// let bigQuery = refs.data.map((reff) => q.Get(reff.id))
+// console.log('bigQuery length:',bigQuery.length)
+// console.table(bigQuery)
+// console.log('slinko:')
+// console.table(slinko)
 //let allDocuments = await client.query(bigQuery)
 //let deleteAllQuery = bigQuery.map((idd) => {
   //let deleteAllQuery = frogIds.map((idd) => {
   //  let deleteAllQuery = bigQuery.map((idd) => {
       //const deleteAllQuery = allDocuments.map((idd) => {
- const deleteAllQuery = slinko.map((idd) => {
+ const deleteAllQuery = listOfIds.map((idd) => {
         return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
   return client.query(deleteAllQuery)
