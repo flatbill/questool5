@@ -13,8 +13,8 @@ exports.handler = async (event, context) => {
   const myQid = event.queryStringParameters.qid 
   console.log('myCust:',myCust)
   console.log('myQid:',myQid)
-  console.log('Netlify Function qtDeleteMassScores invoked.')
-  console.log('here is qtDeleteMassScores event:', event)
+  console.log('Netlify Function qtMassDeleteScores invoked.')
+  console.log('here is qtMassDeleteScores event:', event)
   //
 // construct batch query from a list of Ids
 
@@ -27,7 +27,7 @@ let listOfIds = refs.data.map((r) => r.id)
 })
   return client.query(deleteMassQuery)
     .then((response) => {
-      console.log('running .then of qtDeleteMassScores')
+      console.log('running .then of qtMassDeleteScores')
       return {
         statusCode: 200,
         headers: {'Access-Control-Allow-Origin': '*'},
@@ -35,7 +35,7 @@ let listOfIds = refs.data.map((r) => r.id)
       }
     })
    .catch((error) => {
-    console.log('error running qtDeleteMassScores', error)
+    console.log('error running qtMassDeleteScores', error)
     return {
       statusCode: 400,
       body: JSON.stringify(error)
