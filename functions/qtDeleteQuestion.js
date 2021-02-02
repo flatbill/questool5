@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let ref1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
-  console.log(ref1)
+  console.log(ref1.data)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
   //  let wonderClang = 'classes/qtAnswers/' + firstRef
@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
   //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
   //return client.query(q.Delete(q.Ref(wonderClang)))
   //return client.query(q.Delete(q.Ref('classes/qtQuestions', ref1)))
-  return client.query(q.Delete(q.Ref(ref1)))
+  return client.query(q.Delete(q.Ref(ref1.data)))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
