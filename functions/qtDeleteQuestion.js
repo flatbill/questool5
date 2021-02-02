@@ -9,14 +9,22 @@ exports.handler = async (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
 
   })  
+  const myCust = event.queryStringParameters.cust 
+  const myQid = event.queryStringParameters.qid 
+  const myQuestNbr = '010'  //billy get questNbr from input 
+
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)
   console.log('Function qtDeleteQuestion invoked', data)
+  let ref1 = await client.query
+  (q.Paginate(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
+  )
+
   const questionAdelic = {
-    data: data
+    data: data //billy transform input to ref1 somehow
   }
   /* construct the fauna query */
-  return client.query(q.Delete(q.Ref('classes/qtQuestions'), questionAdelic))
+  return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
