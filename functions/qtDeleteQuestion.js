@@ -23,8 +23,11 @@ exports.handler = async (event, context) => {
   const questionAdelic = {
     data: data //billy transform input to ref1 somehow
   }
+
+  
   /* construct the fauna query */
-  return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
+  //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
+  return client.query(q.Delete(q.Ref('classes/qtQuestions', ref1)))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
