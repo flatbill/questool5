@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
   console.log('Function qtDeleteQuestion invoked', data)
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let ref1 = await client.query
-  (q.get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
+  (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
   console.log(ref1)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
