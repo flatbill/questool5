@@ -17,10 +17,10 @@ exports.handler = async (event, context) => {
   const data = JSON.parse(event.body)
   console.log('Function qtDeleteQuestion invoked', data)
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
-  let ref1 = await client.query
+  let queryThingie = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
   console.log('row 22 bill time 6:46')
-  console.log(ref1)
+  console.log(queryThingie.ref)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
   //  let wonderClang = 'classes/qtAnswers/' + firstRef
@@ -34,7 +34,7 @@ exports.handler = async (event, context) => {
   //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
   //return client.query(q.Delete(q.Ref(wonderClang)))
   //return client.query(q.Delete(q.Ref('classes/qtQuestions', ref1)))
-  return client.query(q.Delete(q.Ref(ref1)))
+  return client.query(q.Delete(q.Ref(queryThingie.ref)))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
