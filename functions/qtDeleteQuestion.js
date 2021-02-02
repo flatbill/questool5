@@ -9,8 +9,8 @@ exports.handler = async (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
 
   })  
-  const myCust = event.queryStringParameters.cust 
-  const myQid = event.queryStringParameters.qid 
+  const myCust = "1" //event.queryStringParameters.cust 
+  const myQid = "1" //event.queryStringParameters.qid 
   const myQuestNbr = '010'  //billy fix this to get questNbr from input 
 
   /* parse the string body into a useable JS object */
