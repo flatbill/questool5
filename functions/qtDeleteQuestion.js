@@ -16,12 +16,13 @@ exports.handler = async (event, context) => {
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)
   console.log('Function qtDeleteQuestion invoked', data)
-  let refs = await client.query
-  (q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
-  
-  let listOfIds = refs.data.map((r) => r.id)
-  let firstRef = listOfIds[0]
-  let wonderClang = 'classes/qtAnswers/' + firstRef
+  //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
+  let ref1 = await client.query
+  (q.get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
+  console.log(ref1)
+  //let listOfIds = refs.data.map((r) => r.id)
+  //  let firstRef = listOfIds[0]
+  //  let wonderClang = 'classes/qtAnswers/' + firstRef
 
   const questionAdelic = {
     data: data //billy transform input to ref1 somehow
@@ -30,8 +31,9 @@ exports.handler = async (event, context) => {
   
   /* construct the fauna query */
   //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
+  //return client.query(q.Delete(q.Ref(wonderClang)))
   //return client.query(q.Delete(q.Ref('classes/qtQuestions', ref1)))
-  return client.query(q.Delete(q.Ref(wonderClang)))
+  return client.query(q.Delete(q.Ref(ref1)))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
