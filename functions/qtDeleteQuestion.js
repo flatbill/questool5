@@ -7,36 +7,29 @@ exports.handler = async (event, context) => {
   /* configure faunaDB Client with our secret */
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
-
   })  
   let myCust = "1" //event.queryStringParameters.cust 
   let myQid = "1" //event.queryStringParameters.qid 
-  let myQuestNbr = '010'  //billy fix this to get questNbr from input 
+  let myQuestNbr = '010'   
 
-  /* parse the string body into a useable JS object */
+  /* parse the string body input into a useable JS object */
   const dataIn = JSON.parse(event.body)
-  console.log('Function qtDeleteQuestion invoked', dataIn)
+  console.log('Function qtDeleteQuestion invoked. dataIn: ', dataIn)
   myCust     = dataIn.cust
   myQid      = dataIn.qid
   myQuestNbr = dataIn.questNbr
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
-  console.log('pgm change 2/2/2021 8:26')
+  //console.log('pgm change 2/2/2021 8:26')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
-  //let listOfIds = refs.data.map((r) => r.id)
-  //  let firstRef = listOfIds[0]
-  //  let wonderClang = 'classes/qtAnswers/' + firstRef
 
   // const questionAdelic = {
-  //   data: data //not used for this function?
+  //   data: data //not used for this function
   // }
   
   /* construct the fauna query */
-  //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
-  //return client.query(q.Delete(q.Ref(wonderClang)))
-  //return client.query(q.Delete(q.Ref('classes/qtQuestions', ref1)))
   return client.query(q.Delete(q.Ref(queryResult1.ref)))
     .then((response) => {
       console.log('success', response)
