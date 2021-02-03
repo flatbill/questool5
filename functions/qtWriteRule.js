@@ -10,10 +10,10 @@ exports.handler = async (event, context) => {
 
   })  
   /* parse the string body into a useable JS object */
-  const dataIn = JSON.parse(event.body)
-  console.log('Function qtWriteRule invoked', dataIn)
+  const data = JSON.parse(event.body)
+  console.log('Function qtWriteRule invoked', data)
   const ruleAdelic = {
-    data: dataIn
+    data: data
   }
   /* construct the fauna query */
   return client.query(q.Create(q.Ref('classes/qtRules'), ruleAdelic))
