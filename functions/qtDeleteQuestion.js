@@ -22,15 +22,16 @@ exports.handler = async (event, context) => {
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
-  console.log('pgm change 2/2/2021 8:14')
+  console.log('pgm change 2/2/2021 8:26')
+  console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
   //  let wonderClang = 'classes/qtAnswers/' + firstRef
 
-  const questionAdelic = {
-    dataIn: data //not used for this function?
-  }
+  // const questionAdelic = {
+  //   data: data //not used for this function?
+  // }
   
   /* construct the fauna query */
   //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
