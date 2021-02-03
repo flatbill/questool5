@@ -9,16 +9,16 @@ exports.handler = async (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
 
   })  
-  const myCust = "1" //event.queryStringParameters.cust 
-  const myQid = "1" //event.queryStringParameters.qid 
-  const myQuestNbr = '010'  //billy fix this to get questNbr from input 
+  let myCust = "1" //event.queryStringParameters.cust 
+  let myQid = "1" //event.queryStringParameters.qid 
+  let myQuestNbr = '010'  //billy fix this to get questNbr from input 
 
   /* parse the string body into a useable JS object */
-  const data = JSON.parse(event.body)
-  console.log('Function qtDeleteQuestion invoked', data)
-  myCust     = data.cust
-  myQid      = data.myQid
-  myQuestNbr = data.questNbr
+  const dataIn = JSON.parse(event.body)
+  console.log('Function qtDeleteQuestion invoked', dataIn)
+  myCust     = dataIn.cust
+  myQid      = dataIn.myQid
+  myQuestNbr = dataIn.questNbr
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
   //  let wonderClang = 'classes/qtAnswers/' + firstRef
 
   const questionAdelic = {
-    data: data //not used for this function?
+    dataIn: data //not used for this function?
   }
   
   /* construct the fauna query */
