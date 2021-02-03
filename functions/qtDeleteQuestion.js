@@ -17,12 +17,12 @@ exports.handler = async (event, context) => {
   const dataIn = JSON.parse(event.body)
   console.log('Function qtDeleteQuestion invoked', dataIn)
   myCust     = dataIn.cust
-  myQid      = dataIn.myQid
+  myQid      = dataIn.qid
   myQuestNbr = dataIn.questNbr
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
-  console.log('pgm change 2/2/2021 7:24')
+  console.log('pgm change 2/2/2021 8:14')
   console.log(queryResult1.ref)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
