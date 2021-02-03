@@ -16,25 +16,27 @@ exports.handler = async (event, context) => {
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)
   console.log('Function qtDeleteQuestion invoked', data)
+  myCust     = data.cust
+  myQid      = data.myQid
+  myQuestNbr = data.questNbr
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
-  let queryThingie = await client.query
+  let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
-  console.log('row 22 pgm change at 7:04')
-  console.log(queryThingie.ref)
+  console.log('pgm change 2/2/2021 7:24')
+  console.log(queryResult1.ref)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
   //  let wonderClang = 'classes/qtAnswers/' + firstRef
 
   const questionAdelic = {
-    data: data //billy transform input to ref1 somehow
+    data: data //not used for this function?
   }
-
   
   /* construct the fauna query */
   //return client.query(q.Delete(q.Ref('classes/qtQuestions'), ref1))
   //return client.query(q.Delete(q.Ref(wonderClang)))
   //return client.query(q.Delete(q.Ref('classes/qtQuestions', ref1)))
-  return client.query(q.Delete(q.Ref(queryThingie.ref)))
+  return client.query(q.Delete(q.Ref(queryResult1.ref)))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
