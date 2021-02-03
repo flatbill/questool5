@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryThingie = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
-  console.log('row 22 bill time 6:46')
+  console.log('row 22 pgm change at 7:04')
   console.log(queryThingie.ref)
   //let listOfIds = refs.data.map((r) => r.id)
   //  let firstRef = listOfIds[0]
