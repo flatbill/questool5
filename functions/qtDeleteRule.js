@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
 
   /* parse the string body input into a useable JS object */
   const dataIn = JSON.parse(event.body)
-  console.log('Function qtDeleteQuestion invoked. dataIn: ', dataIn)
+  console.log('Function qtDeleteRule invoked. dataIn: ', dataIn)
   myCust     = dataIn.cust
   myQid      = dataIn.qid
   mySubset   = dataIn.subset
