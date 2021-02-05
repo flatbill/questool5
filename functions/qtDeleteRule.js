@@ -10,17 +10,19 @@ exports.handler = async (event, context) => {
   })  
   let myCust = "1" //event.queryStringParameters.cust 
   let myQid = "1" //event.queryStringParameters.qid 
-  let myQuestNbr = '010'   
+  let mySubset = 'iqFollowOn'   
+  let myAccum = 'iqAccum'   
 
   /* parse the string body input into a useable JS object */
   const dataIn = JSON.parse(event.body)
   console.log('Function qtDeleteQuestion invoked. dataIn: ', dataIn)
   myCust     = dataIn.cust
   myQid      = dataIn.qid
-  myQuestNbr = dataIn.questNbr
+  mySubset   = dataIn.subset
+  myAccum    = dataIn.accum
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
-  (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
+  (q.Get(q.Match(q.Index('qtRulesX2'),[myCust,myQid,mySubset,myAccum])))
   //console.log('pgm change 2/2/2021 8:26')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
