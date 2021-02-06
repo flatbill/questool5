@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
 
   /* parse the string body input into a useable JS object */
   const data = JSON.parse(event.body)
-  console.log('Function qtUpdateQuestion invoked. dataIn: ', data)
+  console.log('Function qtUpdateQuestion invoked. data: ', data)
   myCust     = data.cust
   myQid      = data.qid
   myQuestNbr = data.questNbr
@@ -25,12 +25,12 @@ exports.handler = async (event, context) => {
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
 
-  // const questionAdelic = {
-  //   data: data //not used for this function
-  // }
+   const questionAdelic = {
+     data: data 
+   }
   
   /* construct the fauna query */
-  return client.query(q.Replace(q.Ref(queryResult1.ref),data))
+  return client.query(q.Update(q.Ref(queryResult1.ref),questionAdelic))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
