@@ -13,11 +13,11 @@ exports.handler = async (event, context) => {
   let myQuestNbr = '010'   
 
   /* parse the string body input into a useable JS object */
-  const dataIn = JSON.parse(event.body)
-  console.log('Function qtUpdateQuestion invoked. dataIn: ', dataIn)
-  myCust     = dataIn.cust
-  myQid      = dataIn.qid
-  myQuestNbr = dataIn.questNbr
+  const data = JSON.parse(event.body)
+  console.log('Function qtUpdateQuestion invoked. dataIn: ', data)
+  myCust     = data.cust
+  myQid      = data.qid
+  myQuestNbr = data.questNbr
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr])))
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
   // }
   
   /* construct the fauna query */
-  return client.query(q.Replace(q.Ref(queryResult1.ref),dataIn))
+  return client.query(q.Replace(q.Ref(queryResult1.ref),data))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
