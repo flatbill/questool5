@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
   myCust     = data.cust
   myQid      = data.qid
   let queryResult1 = await client.query
-  (q.Get(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid])))
+  (q.Get(q.Match(q.Index('qtSubsetsX2'),[myCust,myQid])))
   //console.log('pgm change 2/8/2021 5:41')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
