@@ -9,8 +9,8 @@ exports.handler = async (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
-  const myCust = event.queryStringParameters.cust 
-  const myQid = event.queryStringParameters.qid 
+  const myCust = '1' //event.queryStringParameters.cust 
+  const myQid = '1' //event.queryStringParameters.qid 
   console.log('myCust:',myCust)
   console.log('myQid:',myQid)
   console.log('Netlify Function qtMassDeleteQuestions invoked.')
@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
 let refs = await client.query
   (q.Paginate(q.Match(q.Index('qtQuestionsX1'),[myCust,myQid]))
   )
-let listOfIds = refs.data.map((r) => r.id)
+let listOfIds = refs.data.map((q) => q.id)
  const deleteAllQuery = listOfIds.map((idd) => {
    return q.Delete(q.Ref(`classes/qtQuestions/${idd}`))
 })
