@@ -21,7 +21,8 @@ exports.handler = async (event, context) => {
 let refs = await client.query
   (q.Paginate(q.Match(q.Index('qtQuestionsX1'),[myCust,myQid]))
   )
-let listOfIds = refs.data.map((q) => q.id)
+console.log('refs length: ',refs.length)
+let listOfIds = refs.data.map((r) => r.id)
  const deleteAllQuery = listOfIds.map((idd) => {
    return q.Delete(q.Ref(`classes/qtQuestions/${idd}`))
 })
