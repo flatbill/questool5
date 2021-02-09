@@ -19,9 +19,8 @@ exports.handler = async (event, context) => {
 // construct batch query from a list of Ids
 
 let refs = await client.query
-             (q.Match(q.Index('qtQuestionsX1'),[myCust,myQid])   )
-//(q.Paginate(q.Match(q.Index('qtQuestionsX1'),[myCust,myQid]))  )
-
+(q.Paginate(q.Match(q.Index('qtQuestionsX1'),[myCust,myQid]))  )
+console.log('ready to build list Of Ids...')
 let listOfIds = refs.data.map((r) => r.id)
 console.log('list of Ids length: ', listOfIds.length)
 const deleteAllQuery = listOfIds.map((idd) => {
