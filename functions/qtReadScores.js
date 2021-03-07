@@ -19,7 +19,7 @@ exports.handler = (event, context) => {
   
   let myFaunaFetchScores = 'classes/' + myFaunaCollection + '/'
   //return client.query(q.Paginate(q.Match(q.Ref('indexes/qtScoresX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qtScoresX1'),[myCust,myQid,myUserId,myUserDateTime]),{ size: 500 }))
+  return client.query(q.Paginate(q.Match(q.Index('qtScoresX2'),[myCust,myQid,myUserId,myUserDateTime]),{ size: 500 }))
     .then((response) => {
     const qtScoresRefs = response.data
     console.log('qtScores refs', qtScoresRefs)
