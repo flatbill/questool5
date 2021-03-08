@@ -15,7 +15,7 @@ exports.handler = (event, context) => {
   const myUserDateTime = event.queryStringParameters.userDateTime ;
 
   console.log('Netlify Function qtReadScores invoked.')
-  console.log(myCust,myQid,myUserId,myuserDateTime)
+  console.log(myCust,myQid,myUserId,myUserDateTime)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchScores = 'classes/' + myFaunaCollection + '/'
