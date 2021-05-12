@@ -11,10 +11,10 @@ exports.handler = (event, context) => {
   }) 
   const myCust = event.queryStringParameters.cust 
   const myQid = event.queryStringParameters.qid 
-  const myUserId = event.queryStringParameters.userId 
+  const myUser = event.queryStringParameters.user
 
   console.log('Netlify Function qtReadUser invoked.')
-  console.log(myCust,myQid,myUserId)
+  console.log(myCust,myQid,myUser)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchUser = 'classes/' + myFaunaCollection + '/'
