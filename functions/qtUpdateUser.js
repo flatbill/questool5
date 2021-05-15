@@ -8,12 +8,16 @@ exports.handler = async (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   })  
-  let myCust = event.queryStringParameters.cust 
-  let myQid = event.queryStringParameters.qid 
-  let myUser = event.queryStringParameters.user
+  // let myCust = event.queryStringParameters.cust 
+  // let myQid = event.queryStringParameters.qid 
+  // let myUser = event.queryStringParameters.user
 
   /* parse the string body input into a useable JS object */
   const data = JSON.parse(event.body)
+  let myCust = data.cust 
+  let myQid = data.qid 
+  let myUser = data.userId
+
   console.log('Function qtUpdateUser invoked. data: ', data)
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtUsersX2'),[myCust,myQid,myUser])))
