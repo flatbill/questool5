@@ -9,18 +9,18 @@ exports.handler = (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
-  const myCust = event.queryStringParameters.cust ;
-  const myQid = event.queryStringParameters.qid ;
-  const myUserId = event.queryStringParameters.userId ;
-  const myUserDateTime = event.queryStringParameters.userDateTime ;
+  const myCust = event.queryStringParameters.cust 
+  const myQid = event.queryStringParameters.qid 
+  const myUserId = event.queryStringParameters.userId 
+  //const myUserDateTime = event.queryStringParameters.userDateTime ;
 
   console.log('Netlify Function qtReadScores invoked.')
-  console.log(myCust,myQid,myUserId,myUserDateTime)
+  console.log(myCust,myQid,myUserId)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchScores = 'classes/' + myFaunaCollection + '/'
   //return client.query(q.Paginate(q.Match(q.Ref('indexes/qtScoresX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qtScoresX2'),[myCust,myQid,myUserId,myUserDateTime]),{ size: 500 }))
+  return client.query(q.Paginate(q.Match(q.Index('qtScoresX2'),[myCust,myQid,myUserId]),{ size: 800 }))
     .then((response) => {
     const qtScoresRefs = response.data
     console.log('qtScores refs', qtScoresRefs)
