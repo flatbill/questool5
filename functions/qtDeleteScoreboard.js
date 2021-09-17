@@ -19,8 +19,8 @@ exports.handler = async (event, context) => {
   myQid      = dataIn.qid
   myScoreboardNbr = dataIn.scoreboardNbr
   let queryResult1 = await client.query
-  (q.Get(q.Match(q.Index('qtScoreboardsX2'),[myCust,myQid,myscoreboardNbr])))
-  //console.log('pgm change 2/2/2021 8:26')
+  (q.Get(q.Match(q.Index('qtScoreboardsX2'),[myCust,myQid,myScoreboardNbr])))
+  console.log('api pgm last changed: 10/17/2021 8:13 am local')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
 
