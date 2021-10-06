@@ -18,14 +18,14 @@ exports.handler = async (event, context) => {
   console.log('Function qtDeleteRule invoked. dataIn: ', dataIn)
   myCust     = dataIn.cust
   myQid      = dataIn.qid
-  myRuleNbr  = data.ruleNbr
+  myRuleNbr  = dataIn.ruleNbr
   // mySubset   = dataIn.subset
   // myAccum    = dataIn.accum
   //(q.Match(q.Index('qtQuestionsX2'),[myCust,myQid,myQuestNbr]))
   let queryResult1 = await client.query
   //(q.Get(q.Match(q.Index('qtRulesX2'),[myCust,myQid,mySubset,myAccum])))
   (q.Get(q.Match(q.Index('qtRulesX2'),[myCust,myQid,myRuleNbr])))
-  console.log('pgm change 10/6/2021 07:46')
+  console.log('pgm change 10/6/2021 07:54')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
 
