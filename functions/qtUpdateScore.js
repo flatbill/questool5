@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
   const data = JSON.parse(event.body)
   let myCust = data.cust 
   let myQid = data.qid 
-  let myUser = data.userId
+  let myUser = data.quserId
   let myScoreboardName = data.accum
 
   console.log('Function qtUpdateScore invoked. data: ', data)
