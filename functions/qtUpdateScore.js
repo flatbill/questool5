@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
   /* construct the fauna query */
   return client.query(q.Update(q.Ref(queryResult1.ref),scoreAdelic))
     .then((response) => {
-      console.log('success', response)
+      console.log('31 update score success. ', response)
       /* Success! return the response with statusCode 200 */
       return {
         statusCode: 200,
