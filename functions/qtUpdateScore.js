@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
         //  'Access-Control-Allow-Origin': 'http://localhost:4200' 
         // netlify allows only one allow-origin.  
         // this wrecks the query string fetch.
-        // so, I set this to '*' which is hopefully temp,
+        // so, 2020 I set this to '*' which is hopefully temp,
         // until I can figure it out.
         },
         body: JSON.stringify(response)
