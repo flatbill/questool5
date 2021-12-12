@@ -19,7 +19,7 @@ exports.handler = (event, context) => {
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchUser = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Index('qtScoresX3'),[myCust,myQid,myUser,myScoreboardName]),{ size: 10 }))
+  return client.query(q.Paginate(q.Match(q.Index('qtScoresX3'),[myCust,myQid,myUser,myScoreboardName]),{ size: 500 }))
     .then((response) => {
     const qtScoreRefs = response.data
     console.log('qtScore refs', qtScoreRefs)

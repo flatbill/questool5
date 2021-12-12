@@ -19,7 +19,7 @@ exports.handler = (event, context) => {
   
   let myFaunaFetchUser = 'classes/' + myFaunaCollection + '/'
   //return client.query(q.Paginate(q.Match(q.Ref('indexes/qtAnswersX1'))))
-  return client.query(q.Paginate(q.Match(q.Index('qtUsersX2'),[myCust,myQid,myUser]),{ size: 10 }))
+  return client.query(q.Paginate(q.Match(q.Index('qtUsersX2'),[myCust,myQid,myUser]),{ size: 500 }))
     .then((response) => {
     const qtUserRefs = response.data
     console.log('qtUser refs', qtUserRefs)

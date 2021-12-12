@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
   console.log('here is qtReadRules event:', event)
   // let custAndQid = myCust + myQid
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Index('qtRulesX1'), [myCust,myQid] )))
+  return client.query(q.Paginate(q.Match(q.Index('qtRulesX1'), [myCust,myQid] ),{ size: 500 }))
     .then((response) => {
     const qtRulesRefs = response.data
     console.log('qtRules refs', qtRulesRefs)
