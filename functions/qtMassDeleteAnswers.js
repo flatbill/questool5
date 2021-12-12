@@ -11,15 +11,17 @@ exports.handler = async (event, context) => {
   }) 
   const myCust = event.queryStringParameters.cust 
   const myQid = event.queryStringParameters.qid 
+  const myUser = event.queryStringParameters.qid 
   console.log('myCust:',myCust)
   console.log('myQid:',myQid)
+  console.log('myUser:',myUser)
   console.log('Netlify Function qtDeleteAllAnswers invoked.')
   console.log('here is qtDeleteAllAnswers event:', event)
   //
 // construct batch query from a list of Ids
 
 let refs = await client.query
-  (q.Paginate(q.Match(q.Index('qtAnswersX1'),[myCust,myQid]))
+  (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]))
   )
 let listOfIds = refs.data.map((r) => r.id)
  const deleteAllQuery = listOfIds.map((idd) => {
