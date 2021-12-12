@@ -11,11 +11,12 @@ exports.handler = async (event, context) => {
   }) 
   const myCust = event.queryStringParameters.cust 
   const myQid = event.queryStringParameters.qid 
-  const myUser = event.queryStringParameters.qid 
+  const myUser = event.queryStringParameters.user
   console.log('myCust:',myCust)
   console.log('myQid:',myQid)
   console.log('myUser:',myUser)
   console.log('Netlify Function qtDeleteAllAnswers invoked.')
+  console.log('function version date: 12/02/2021.')
   console.log('here is qtDeleteAllAnswers event:', event)
   //
 // construct batch query from a list of Ids
