@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   }) 
   const myCust = event.queryStringParameters.cust 
   const myQid = event.queryStringParameters.qid 
-  const myQid = event.queryStringParameters.user
+  const myUser = event.queryStringParameters.user
   console.log('myCust:',myCust)
   console.log('myQid:',myQid)
   console.log('myQid:',myUser)
