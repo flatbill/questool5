@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
     data: data
   }
   /* construct the fauna query */
-  return client.query(q.Create(q.Ref('classes/qtGroups'), surveyAdelic))
+  return client.query(q.Create(q.Ref('classes/qtSurveys'), surveyAdelic))
     .then((response) => {
       console.log('success', response)
       /* Success! return the response with statusCode 200 */
