@@ -9,9 +9,8 @@ exports.handler = async (event, context) => {
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
-  const myQid = event.queryStringParameters.qid 
   const myCust = event.queryStringParameters.cust 
-  console.log('myQid:',myCust)
+  console.log('myCust:',myCust)
   console.log('Netlify Function qtReadSurveys invoked.')
   console.log('here is qtReadSurveys event:', event)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
