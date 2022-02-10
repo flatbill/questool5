@@ -11,14 +11,13 @@ exports.handler = async (event, context) => {
   }) 
   const myQid = event.queryStringParameters.qid 
   const myCust = event.queryStringParameters.cust 
-  console.log('myQid:',myQid)
   console.log('myQid:',myCust)
   console.log('Netlify Function qtReadSurveys invoked.')
   console.log('here is qtReadSurveys event:', event)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Index('qtSurveysX1'), [myCust,myQid] ),{ size: 500 }))
+  return client.query(q.Paginate(q.Match(q.Index('qtSurveysX1'), [myCust] ),{ size: 500 }))
     .then((response) => {
     const qtSurveysRefs = response.data
     console.log('qtSurveys refs', qtSurveysRefs)
