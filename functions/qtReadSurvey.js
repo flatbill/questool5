@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
     secret: process.env.FAUNADB_SERVER_SECRET2
   }) 
   const myCust = event.queryStringParameters.cust 
-  const myQid = event.queryStringParameters.cust 
+  const myQid = event.queryStringParameters.qid 
   console.log('myCust:',myCust)
   console.log('myQid:',myQid)
   console.log('Netlify Function qtReadSurvey invoked.')
