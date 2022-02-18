@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
   console.log('here is qtReadSurvey event:', event)
   
   let myFaunaFetchQuests = 'classes/' + myFaunaCollection + '/'
-  return client.query(q.Paginate(q.Match(q.Index('qtSurveysX1'), [myCust,myQid] ),{ size: 500 }))
+  return client.query(q.Paginate(q.Match(q.Index('qtSurveysX2'), [myCust,myQid] ),{ size: 500 }))
     .then((response) => {
     const qtSurveysRefs = response.data
     console.log('qtSurveys refs', qtSurveysRefs)
