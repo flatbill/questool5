@@ -15,6 +15,8 @@ exports.handler = (event, context) => {
   //const myUserDateTime = event.queryStringParameters.userDateTime ;
 
   console.log('Netlify Function qtReadMultScores invoked.')
+  console.log('Netlify Function qtReadMultScores invoked.')
+  console.log('Netlify Function qtReadMultScores invoked.')
   console.log(myCust,myQid)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
