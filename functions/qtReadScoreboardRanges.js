@@ -39,5 +39,5 @@ exports.handler = (event, context) => {
     }
   })  
 }
-  return urlPath.match(/([^\/]*)\/*$/)[0]
-}
+//   return urlPath.match(/([^\/]*)\/*$/)[0]
+// }
