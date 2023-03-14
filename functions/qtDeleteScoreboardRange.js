@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
   myScoreboardNbr = dataIn.scoreboardNbr
   myScoreboardRangeNbr = dataIn.scoreboardRangeNbr
   let queryResult1 = await client.query
-  (q.Get(q.Match(q.Index('qtScoreboardRangesX2'),[myCust,myQid,myScoreboardNbr,myScoreboardRangeNbr])))
+  (q.Get(q.Match(q.Index('qtScoreboardRangesX3'),[myCust,myQid,myScoreboardNbr,myScoreboardRangeNbr])))
   console.log('api pgm last changed: 03/12/2023 7:40 pm local')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
