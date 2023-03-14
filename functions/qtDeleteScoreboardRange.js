@@ -11,7 +11,7 @@ exports.handler = async (event, context) => {
   let myCust = "1" //event.queryStringParameters.cust 
   let myQid = "1" //event.queryStringParameters.qid 
   let myscoreboardNbr = '1'   
-  let myscoreboardRangeNbr = '1'   
+  let myRangeNbr = '1'   
 
   /* parse the string body input into a useable JS object */
   const dataIn = JSON.parse(event.body)
@@ -19,10 +19,10 @@ exports.handler = async (event, context) => {
   myCust     = dataIn.cust
   myQid      = dataIn.qid
   myScoreboardNbr = dataIn.scoreboardNbr
-  myScoreboardRangeNbr = dataIn.scoreboardRangeNbr
+  myRangeNbr = dataIn.rangeNbr
   let queryResult1 = await client.query
-  (q.Get(q.Match(q.Index('qtScoreboardRangesX3'),[myCust,myQid,myScoreboardNbr,myScoreboardRangeNbr])))
-  console.log('api pgm last changed: 03/12/2023 7:40 pm local')
+  (q.Get(q.Match(q.Index('qtScoreboardRangesX3'),[myCust,myQid,myScoreboardNbr,myRangeNbr])))
+  console.log('api pgm last changed: 03/14/2023 1:15 pm local')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
 
