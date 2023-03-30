@@ -17,35 +17,22 @@ exports.handler = (event, context) => {
   
   let myFaunaFetchSubscribers = 'classes/' + myFaunaCollection + '/'
 //   return client.query(q.Paginate(q.Match(q.Index('qtSubscribersX1'),[mySubscriber]),{ size: 1 }))
-// return client.query(q.Paginate(q.Documents(q.Collection('qtSubscribers')),{ size: 1 }))
-return client.query(q.Map(
-  q.Paginate(q.Documents(q.Collection('qtSubscribers'))),
-  q.Lambda(x => q.Get(x)) ))
+return client.query(q.Paginate(q.Documents(q.Collection('qtSubscribers')),{ size: 1 }))
     .then((response) => {
-    const qtSubscribersRefs = response.data
-    console.log('qtSubscribers refs', qtSubscribersRefs)
-    console.log(`${qtSubscribersRefs.length} qtSubscribers found`)
-    const getAllqtSubscribersDataQuery = qtSubscribersRefs.map((ref) => {
-      return q.Get(ref)
-    })
-    // then query the refs
-    return client.query(getAllqtSubscribersDataQuery).then((ret) => {
-      return {
+    const qtSubscribersStuff = response.data
+    console.log('qtSubscribers stuff:', qtSubscribersStuff)
+    console.log(`${qtSubscribersStuff.length} qtSubscribers found`)
+    return {
         statusCode: 200,
         headers: {'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify(ret)
+        body: JSON.stringify(qtSubscribersStuff)
       }
-    })
-  }).catch((error) => {
+  })
+  .catch((error) => {
     console.log('error', error)
     return {
       statusCode: 400,
       body: JSON.stringify(error)
     }
   })  
-}
-function getIdInline(urlPath) {
-  console.log(`Running getIdInline from Netlify Function 'qtReadSubscribers' . urlPath: ${urlPath}`)
-
-  return urlPath.match(/([^\/]*)\/*$/)[0]
 }
