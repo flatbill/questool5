@@ -22,11 +22,17 @@ return client.query(q.Paginate(q.Documents(q.Collection('qtSubscribers')),{ size
     const qtSubscribersStuff = response.data
     console.log('23 qtSubscribers stuff:', qtSubscribersStuff)
     console.log(`${qtSubscribersStuff.length} qtSubscribers found`)
-    return {
+    const getAllqtSubscribersDataQuery = qtSubscribersStuff.map((ref) => {
+      return q.Get(ref)
+    })
+    // then query the refs
+    return client.query(getAllqtSubscribersDataQuery).then((ret) => {
+      return {
         statusCode: 200,
         headers: {'Access-Control-Allow-Origin': '*'},
-        body: JSON.stringify(qtSubscribersStuff)
+        body: JSON.stringify(ret)
       }
+    })
   })
   .catch((error) => {
     console.log('error', error)
