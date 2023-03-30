@@ -19,13 +19,15 @@ exports.handler = (event, context) => {
 //   return client.query(q.Paginate(q.Match(q.Index('qtSubscribersX1'),[mySubscriber]),{ size: 1 }))
 return client.query(q.Paginate(q.Documents(q.Collection('qtSubscribers')),{ size: 55 }))
     .then((response) => {
-    const qtSubscribersStuff = response.data
-    console.log('23 qtSubscribers stuff:', qtSubscribersStuff)
-    console.log(`${qtSubscribersStuff.length} qtSubscribers found`)
-    const getAllqtSubscribersDataQuery = qtSubscribersStuff.map((ref) => {
+    const qtSubscribersRefs = response.data
+    console.log('23 qtSubscribers refs:', qtSubscribersRefs)
+    console.log(`${qtSubscribersRefs.length} qtSubscribers found`)
+    const getAllqtSubscribersDataQuery = qtSubscribersRefs.map((ref) => {
       return q.Get(ref)
     })
     // then query the refs
+    console.log('getAllqtSubscribersDataQuery:')
+    console.table(getAllqtSubscribersDataQuery)
     return client.query(getAllqtSubscribersDataQuery).then((ret) => {
       return {
         statusCode: 200,
