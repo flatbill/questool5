@@ -25,6 +25,7 @@ let refs = await client.query
   (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]))
   )
 let listOfIds = refs.data.map((r) => r.id)
+console.table(listOfIds) // selzer april 6 why isnt mass delete working?
  const deleteAllQuery = listOfIds.map((idd) => {
    return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
