@@ -22,8 +22,8 @@ exports.handler = async (event, context) => {
 // construct batch query from a list of Ids
 
 let refs = await client.query
-  (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]), { size: 66 })
-  )
+  (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]), { size: 666 })
+  ) // reads max of 666 rows
 let listOfIds = refs.data.map((r) => r.id)
 console.log('28 lambda qtmassDelete function listOfIds:')
 console.table(listOfIds) // selzer april 6 why isnt mass delete working? maybe size parm
