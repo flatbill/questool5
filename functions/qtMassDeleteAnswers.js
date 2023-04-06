@@ -22,11 +22,11 @@ exports.handler = async (event, context) => {
 // construct batch query from a list of Ids
 
 let refs = await client.query
-  (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]))
+  (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]), { size: 66 })
   )
 let listOfIds = refs.data.map((r) => r.id)
-console.log('28 lambda qtmassDeleteAnswers function listOfIds:')
-console.table(listOfIds) // selzer april 6 why isnt mass delete working?
+console.log('28 lambda qtmassDelete function listOfIds:')
+console.table(listOfIds) // selzer april 6 why isnt mass delete working? maybe size parm
  const deleteAllQuery = listOfIds.map((idd) => {
    return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
 })
