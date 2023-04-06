@@ -16,7 +16,7 @@ exports.handler = async (event, context) => {
   console.log('myQid:',myQid)
   console.log('myUser:',myUser)
   console.log('Netlify Function qtDeleteAllAnswers invoked.')
-  console.log('function version date: 12/02/2021.')
+  console.log('function version date: 04/06/2023.')
   console.log('here is qtDeleteAllAnswers event:', event)
   //
 // construct batch query from a list of Ids
@@ -25,6 +25,7 @@ let refs = await client.query
   (q.Paginate(q.Match(q.Index('qtAnswersX2'),[myCust,myQid,myUser]))
   )
 let listOfIds = refs.data.map((r) => r.id)
+console.log('28 lambda qtmassDeleteAnswers function listOfIds:')
 console.table(listOfIds) // selzer april 6 why isnt mass delete working?
  const deleteAllQuery = listOfIds.map((idd) => {
    return q.Delete(q.Ref(`classes/qtAnswers/${idd}`))
