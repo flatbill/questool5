@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
 // construct batch query from a list of Ids
 
 let refs = await client.query
-  (q.Paginate(q.Match(q.Index('qtScoresX2'),[myCust,myQid,myUser]))
+  (q.Paginate(q.Match(q.Index('qtScoresX2'),[myCust,myQid,myUser]), { size: 1500 })
   )
 let listOfIds = refs.data.map((r) => r.id)
  const deleteMassQuery = listOfIds.map((idd) => {
