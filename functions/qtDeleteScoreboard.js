@@ -10,17 +10,17 @@ exports.handler = async (event, context) => {
   })  
   let myCust = "1" //event.queryStringParameters.cust 
   let myQid = "1" //event.queryStringParameters.qid 
-  let myscoreboardNbr = '1'   
+  let myScoreboardNbr = '1'   
 
   /* parse the string body input into a useable JS object */
   const dataIn = JSON.parse(event.body)
-  console.log('Function qtDeleteQuestion invoked. dataIn: ', dataIn)
+  console.log('Function qtDeleteScoreboard invoked. dataIn: ', dataIn)
   myCust     = dataIn.cust
   myQid      = dataIn.qid
   myScoreboardNbr = dataIn.scoreboardNbr
   let queryResult1 = await client.query
   (q.Get(q.Match(q.Index('qtScoreboardsX2'),[myCust,myQid,myScoreboardNbr])))
-  console.log('api pgm last changed: 10/17/2021 8:13 am local')
+  console.log('api pgm last changed: 05/07/2023 8:13 pm local')
   console.log('queryResult1.ref: ')
   console.log(queryResult1.ref)
 
