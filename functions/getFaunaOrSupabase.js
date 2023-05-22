@@ -1,5 +1,8 @@
 // const faunaOrSupabase = process.env.faunaOrSupabase
 const faunaOrSupabase = 'fauna'
+let responseBody = {
+  message: 'hi from message'
+};
 
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context) => {
@@ -8,6 +11,6 @@ exports.handler = async (event, context) => {
       return {
         statusCode: 200,
         headers: {  'Access-Control-Allow-Origin': '*'  },
-        body: faunaOrSupabase
+        body:    JSON.stringify(responseBody)
       }
 }
