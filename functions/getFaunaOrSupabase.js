@@ -1,4 +1,5 @@
-const faunaOrSupabase = process.env.faunaOrSupabase
+// const faunaOrSupabase = process.env.faunaOrSupabase
+const faunaOrSupabase = 'fauna'
 
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context) => {
@@ -16,5 +17,5 @@ exports.handler = async (event, context) => {
         },
         body: JSON.stringify(faunaOrSupabase)
       }
-    })
+    
 }
