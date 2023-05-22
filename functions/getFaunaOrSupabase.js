@@ -1,9 +1,11 @@
 const faunaOrSupabase = process.env.faunaOrSupabase
 // const faunaOrSupabase = 'faunaxxx'
+// let responseBody = {
+//   message: 'hi from message'
+// };
 let responseBody = {
-  message: 'hi from message'
-};
-
+  faunaOrSupabase: faunaOrSupabase
+}
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context) => {
   console.log('running 9 getFaunaOrSupabase lambda')
