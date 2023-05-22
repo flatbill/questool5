@@ -6,7 +6,7 @@ let responseBody = {
 
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context) => {
-  console.log('running getFaunaOrSupabase lambda')
+  console.log('running 9 getFaunaOrSupabase lambda')
   console.log('faunaOrSupabase:')
   console.log(faunaOrSupabase)
   console.log('json stringify response body:')
