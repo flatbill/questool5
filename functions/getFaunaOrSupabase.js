@@ -1,14 +1,14 @@
-const faunaOrSupabase = process.env.faunaOrSupabase
 // const faunaOrSupabase = 'faunaxxx'
 // let responseBody = {
 //   message: 'hi from message'
 // };
-let responseBody = {
-  faunaOrSupabase: faunaOrSupabase
-}
 /* export our lambda function as named "handler" export */
 exports.handler = async (event, context) => {
   console.log('running 9 getFaunaOrSupabase lambda')
+  let faunaOrSupabase = process.env.faunaOrSupabase
+  let responseBody = {
+    faunaOrSupabase: faunaOrSupabase
+  }
   console.log('faunaOrSupabase:')
   console.log(faunaOrSupabase)
   console.log('json stringify response body:')
