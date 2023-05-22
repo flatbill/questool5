@@ -1,5 +1,5 @@
 // const faunaOrSupabase = process.env.faunaOrSupabase
-const faunaOrSupabase = 'fauna'
+const faunaOrSupabase = 'faunaxxx'
 let responseBody = {
   message: 'hi from message'
 };
