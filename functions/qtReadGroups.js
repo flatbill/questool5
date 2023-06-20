@@ -5,6 +5,7 @@ const faunadb = require('faunadb')
 const q = faunadb.query
 
 exports.handler = async (event, context) => {
+  console.log('Netlify Function qtReadGroups invoked.')
   /* configure faunaDB Client with our secret */
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET2
@@ -13,7 +14,6 @@ exports.handler = async (event, context) => {
   const myCust = event.queryStringParameters.cust 
   console.log('myQid:',myQid)
   console.log('myQid:',myCust)
-  console.log('Netlify Function qtReadGroups invoked.')
   console.log('here is qtReadGroups event:', event)
   // let myFaunaDbName = 'alaska6'  // not needed cuz FAUNADB_SERVER_SECRET2 is tied to database alaska6.
   
